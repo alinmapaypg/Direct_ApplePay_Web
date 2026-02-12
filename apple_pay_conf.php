@@ -19,9 +19,9 @@ define('PRODUCTION_CURRENCYCODE', 'SAR');	// https://en.wikipedia.org/wiki/ISO_4
 define('PRODUCTION_COUNTRYCODE', 'SA');		// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 define('PRODUCTION_DISPLAYNAME', 'My Test Shop');
 
-define('TERMINAL_ID','TER5392572');
-define('PASSWORD','TER25123653637313042804');
-define('KEY', 'f1aa70c3de58cbd8b132b50799f4ea7b120168a43b6c20ab99298064a7df77e1'); 
-define('URL', 'https://pg.alinmapay.com.sa/Transactions/v2/payments/pay-request'); 
+define('TERMINAL_ID','');
+define('PASSWORD','');
+define('KEY', ''); 
+define('URL', ''); 
 define('DEBUG', 'true');
 ?>

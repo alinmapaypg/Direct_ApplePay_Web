@@ -42,17 +42,17 @@ define('DEBUG', '');
 
 ## 💳 Apple Pay Payment Flow
 
-1.  Customer clicks **Apple Pay** button\
-2.  Apple Pay session starts\
-3.  Merchant validation is performed\
-4.  Customer authorizes payment (Face ID / Touch ID)\
-5.  Encrypted payment token is generated\
-6.  Token is sent to your server\
-7.  Server processes transaction via Payment Gateway\
+1.  Customer clicks **Apple Pay** button
+2.  Apple Pay session starts
+3.  Merchant validation is performed
+4.  Customer authorizes payment (Face ID / Touch ID)
+5.  Encrypted payment token is generated
+6.  Token is sent to your server
+7.  Server processes transaction via Payment Gateway
 8.  Transaction result is returned to customer
 ------------------------------------------------------------------------
 
-Apple Pay Web Certificate Creation Guide
+# Apple Pay Web Certificate Creation Guide
 
 This guide explains the complete process to configure Apple Pay on Web,
 including Merchant ID creation, domain verification, and certificate
@@ -114,14 +114,14 @@ generation.
 6.  Set an export password.
 
 ### Step 4: Convert Certificate to PEM
-
-openssl pkcs12 -in Certificates.p12 -out ApplePay.crt.pem -clcerts
--nokeys
+``` php
+openssl pkcs12 -in Certificates.p12 -out ApplePay.crt.pem -clcerts -nokeys
+```
 
 ### Step 5: Create Private Key in PEM Format
-
+``` php
 openssl pkcs12 -in Certificates.p12 -out ApplePay.key.pem -nocerts
-
+```
 ------------------------------------------------------------------------
 
 ## D. Create Payment Processing Certificate
@@ -151,10 +151,14 @@ openssl pkcs12 -in Certificates.p12 -out ApplePay.key.pem -nocerts
 1.  Export private key as .p12.
 2.  Set password.
 3.  Convert .p12 to PEM
+   ``` php
     openssl pkcs12 -in Certificates.p12 -passin pass:YOURPASSWORD -out Certificates.pem
+``` 
 4.  Step 5: Convert PEM to PK8 Format
+ ``` php
     openssl pkcs8 -in ecc.pem -topk8 -nocrypt -out ecc.pk8
-5.  Rename File
+```
+6.  Rename File
     Rename the generated .pk8 file using your Merchant Identifier name.
     Example: merchant.com.yourcompany.pk8
 

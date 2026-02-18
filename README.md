@@ -58,17 +58,7 @@ This guide explains the complete process to configure Apple Pay on Web,
 including Merchant ID creation, domain verification, and certificate
 generation.
 
-------------------------------------------------------------------------
-
-## A. Create Apple Developer Account
-
-1.  Go to the Apple Developer website.
-2.  Create an Apple Developer account if you do not already have one.
-3.  Complete enrollment if required.
-
-------------------------------------------------------------------------
-
-## B. Create Apple Pay Merchant ID
+## A. Create Apple Pay Merchant ID
 
 1.  Sign in to your Apple Developer account.
 2.  Navigate to Certificates, Identifiers & Profiles.
@@ -81,30 +71,20 @@ generation.
 
 ------------------------------------------------------------------------
 
-## C. Verify Your Domain (Web Only)
+## B. Verify Your Domain (Web Only)
 
 1.  Open your created Merchant ID.
 2.  Click Add Domain.
 3.  Enter the domain or subdomain where Apple Pay will be implemented.
 4.  Download the domain association file from the Apple Developer
     portal.
-5.  Upload the file to:
-
-https://yourdomain.com/.well-known/apple-developer-merchantid-domain-association.txt
-
+5.  Upload the file to : https://yourdomain.com/.well-known/apple-developer-merchantid-domain-association.txt
 6.  Return to Apple Developer portal and click Verify.
 7.  Ensure the domain status shows Verified.
 
-### If Status Shows "Pending"
-
--   Confirm HTTPS (valid TLS/SSL certificate).
--   Ensure file path is correct.
--   Ensure file content is unchanged.
--   Confirm no redirects are interfering.
-
 ------------------------------------------------------------------------
 
-## D. Create Merchant Identity Certificate & Private Key (Web Only)
+## C. Create Merchant Identity Certificate & Private Key (Web Only)
 
 ### Step 1: Generate CSR (Mac)
 
@@ -144,7 +124,7 @@ openssl pkcs12 -in Certificates.p12 -out ApplePay.key.pem -nocerts
 
 ------------------------------------------------------------------------
 
-## E. Create Payment Processing Certificate
+## D. Create Payment Processing Certificate
 
 ### Step 1: Generate CSR (ECC 256)
 
@@ -170,42 +150,22 @@ openssl pkcs12 -in Certificates.p12 -out ApplePay.key.pem -nocerts
 
 1.  Export private key as .p12.
 2.  Set password.
-
-### Step 4: Convert .p12 to PEM
-
-openssl pkcs12 -in Certificates.p12 -passin pass:YOURPASSWORD -out
-Certificates.pem
-
-### Step 5: Convert PEM to PK8 Format
-
-openssl pkcs8 -in ecc.pem -topk8 -nocrypt -out ecc.pk8
-
-### Step 6: Rename File
-
-Rename the generated .pk8 file using your Merchant Identifier name.
-
-Example:
-
-merchant.com.yourcompany.pk8
+3.  Convert .p12 to PEM
+    openssl pkcs12 -in Certificates.p12 -passin pass:YOURPASSWORD -out Certificates.pem
+4.  Step 5: Convert PEM to PK8 Format
+    openssl pkcs8 -in ecc.pem -topk8 -nocrypt -out ecc.pk8
+5.  Rename File
+    Rename the generated .pk8 file using your Merchant Identifier name.
+    Example: merchant.com.yourcompany.pk8
 
 ------------------------------------------------------------------------
 
-## Final Files Required
+## Final Files Output
 
 -   Merchant Identity Certificate (PEM)
 -   Merchant Identity Private Key (PEM)
--   Payment Processing Certificate
 -   Private Key (.pk8)
--   Verified Domain
 
-------------------------------------------------------------------------
-
-## Security Notes
-
--   Keep .p12, .pem, and .pk8 files secure.
--   Never expose private keys publicly.
--   Use strong passwords for exports.
--   Store certificates securely on production servers.
 ------------------------------------------------------------------------
 
 ## 📄 License

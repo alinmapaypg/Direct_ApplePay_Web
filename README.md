@@ -31,7 +31,7 @@ Update your configuration file with:
 define('PRODUCTION_CERTIFICATE_KEY', '');   // .key.pem file path
 define('PRODUCTION_CERTIFICATE_PATH', '');  // .crt.pem file path
 define('PRODUCTION_CERTIFICATE_KEY_PASS', '');  // password for certificates
-DOMAIN_NAME = "yourdomain.com";
+define('PRODUCTION_MERCHANTIDENTIFIER', '');   //Website
 define('TERMINAL_ID','');
 define('PASSWORD','');
 define('KEY', ''); 
